@@ -4,17 +4,18 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import guru.qa.niffler.jupiter.annotation.GenerateCategory;
 import guru.qa.niffler.jupiter.annotation.GenerateSpend;
-import guru.qa.niffler.jupiter.extension.CategoryExtension;
-import guru.qa.niffler.jupiter.extension.SpendExtension;
+import guru.qa.niffler.jupiter.annotation.meta.WebTest;
 import guru.qa.niffler.model.CurrencyValues;
 import guru.qa.niffler.model.SpendJson;
 import guru.qa.niffler.pages.LandingPage;
 import guru.qa.niffler.pages.LoginPage;
 import guru.qa.niffler.pages.MainPage;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith({CategoryExtension.class, SpendExtension.class})
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+
+@WebTest
 public class SpendingTest {
 
     static {
@@ -24,6 +25,12 @@ public class SpendingTest {
     private final LandingPage landingPage = new LandingPage();
     private final LoginPage loginPage = new LoginPage();
     private final MainPage mainPage = new MainPage();
+
+    @Test
+    void anotherTest() {
+        Selenide.open("http://127.0.0.1:3000/");
+        $("a[href*='redirect']").should(visible);
+    }
 
     @GenerateCategory(category = "Отпуск",
             username = "dima")

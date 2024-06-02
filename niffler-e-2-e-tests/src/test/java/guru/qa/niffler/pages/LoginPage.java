@@ -3,6 +3,7 @@ package guru.qa.niffler.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -21,30 +22,30 @@ public class LoginPage {
         return this;
     }
 
-    // Set username
+    @Step("Ввести логин: {username}")
     public LoginPage setUsername(String username) {
         usernameInput.setValue(username);
         return this;
     }
 
-    // Set password
+    @Step("Ввести пароль: {password}")
     public LoginPage setPassword(String password) {
         passwordInput.setValue(password);
         return this;
     }
 
-    // Submit the form
+    @Step("Нажать кнопку SignIn")
     public void signIn() {
         signInButton.click();
     }
 
-    // Additional functionality to interact with the password visibility toggle
+    @Step("Клик по переключателю видимости пароля")
     public LoginPage togglePasswordVisibility() {
         $(".form__password-button").click();
         return this;
     }
 
-    // Method to navigate to the registration page if needed
+    @Step("Перейти на страницу регистрации")
     public void goToRegistration() {
         $("a[href='/register']").click();
     }

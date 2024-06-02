@@ -2,6 +2,7 @@ package guru.qa.niffler.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -14,23 +15,23 @@ public class LandingPage {
     private final SelenideElement loginLink = loginBtnSection.$(byText("Login"));
     private final SelenideElement registerLink = loginBtnSection.$(byText("Register"));
 
-    // Method to open the landing page
+    @Step("Открыть страницу лендинга")
     public LandingPage open() {
         Selenide.open("/"); // Adjust the URL as needed, for example, the root URL of the site
         return this;
     }
 
-    // Method to ensure the page is loaded
+    @Step("Проверка прогрузилась ли страница")
     public void checkIsLoaded() {
         header.shouldBe(visible);
     }
 
-    // Method to navigate to the login page
+    @Step("Перейти на страницу авторизации")
     public void clickLogin() {
         loginLink.click();
     }
 
-    // Method to navigate to the registration page
+    @Step("Перейти на страницу регистрации")
     public void clickRegister() {
         registerLink.click();
     }
