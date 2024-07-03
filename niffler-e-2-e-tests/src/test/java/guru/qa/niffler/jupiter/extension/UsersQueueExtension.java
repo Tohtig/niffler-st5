@@ -7,7 +7,6 @@ import io.qameta.allure.Allure;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.*;
 
-import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.*;
@@ -37,22 +36,6 @@ public class UsersQueueExtension implements
         USERS.put(User.Selector.INVITATION_RECEIVED, new ConcurrentLinkedQueue<>(
                 List.of(simpleUser("barsik", "12345"))
         ));
-    }
-
-    private List<Parameter> getParameters(ExtensionContext context) {
-        List<Method> allMethods = new ArrayList<>();
-
-        allMethods.add(context.getRequiredTestMethod());
-        Arrays.stream(context.getRequiredTestClass().getDeclaredMethods())
-                .filter(f -> f.isAnnotationPresent(BeforeEach.class)).forEach(allMethods::add);
-
-        List<Parameter> parameters = allMethods.stream()
-                .map(Executable::getParameters)
-                .flatMap(Arrays::stream)
-                .filter(parameter -> parameter.isAnnotationPresent(User.class))
-                .filter(parameter -> parameter.getType().isAssignableFrom(UserJson.class)).toList();
-
-        return parameters;
     }
 
 @Override
