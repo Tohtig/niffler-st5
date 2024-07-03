@@ -2,6 +2,7 @@ package guru.qa.niffler.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -12,36 +13,36 @@ public class RegisterPage {
     private final SelenideElement passwordSubmitInput = $("#passwordSubmit");
     private final SelenideElement signUpButton = $(".form__submit");
 
-    // Open the registration page
+    @Step("Открыть страницу регистрации")
     public RegisterPage open() {
         Selenide.open("/register"); // Adjust the URL if needed
         return this;
     }
 
-    // Set username
+    @Step("Задать имя пользователя: {username}")
     public RegisterPage setUsername(String username) {
         usernameInput.setValue(username);
         return this;
     }
 
-    // Set password
+    @Step("Задать пароль пользователя: {password}")
     public RegisterPage setPassword(String password) {
         passwordInput.setValue(password);
         return this;
     }
 
-    // Set submit password
+    @Step("Повторить пароль пользователя: {password}")
     public RegisterPage setSubmitPassword(String password) {
         passwordSubmitInput.setValue(password);
         return this;
     }
 
-    // Submit the registration form
+    @Step("Нажать кнопку SignUp")
     public void register() {
         signUpButton.click();
     }
 
-    // Method to navigate to the login page if needed
+    @Step("Перейти на страницу авторизации")
     public void goToLogin() {
         $("a[href='http://127.0.0.1:3000/redirect']").click();
     }
