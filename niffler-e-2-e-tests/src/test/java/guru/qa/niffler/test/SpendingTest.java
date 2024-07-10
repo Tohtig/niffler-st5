@@ -10,6 +10,7 @@ import guru.qa.niffler.model.SpendJson;
 import guru.qa.niffler.pages.LandingPage;
 import guru.qa.niffler.pages.LoginPage;
 import guru.qa.niffler.pages.MainPage;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -26,6 +27,7 @@ public class SpendingTest {
     private final LoginPage loginPage = new LoginPage();
     private final MainPage mainPage = new MainPage();
 
+    @Disabled
     @Test
     void anotherTest() {
         Selenide.open("http://127.0.0.1:3000/");

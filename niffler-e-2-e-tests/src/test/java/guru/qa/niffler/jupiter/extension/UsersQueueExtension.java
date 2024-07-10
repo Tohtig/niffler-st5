@@ -28,7 +28,7 @@ public class UsersQueueExtension implements
 
     static {
         USERS.put(User.Selector.WITH_FRIENDS, new ConcurrentLinkedQueue<>(
-                List.of(simpleUser("dima", "12345"))
+                List.of(simpleUser("barsik", "12345"))
         ));
         USERS.put(User.Selector.INVITATION_SEND, new ConcurrentLinkedQueue<>(
                 List.of(simpleUser("duck", "12345"))
